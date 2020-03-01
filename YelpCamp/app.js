@@ -24,7 +24,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seed the database
-//seedDB();
+seedDB();
 
 
 // PASSPORT CONFIGURATION
