@@ -1,18 +1,19 @@
-var express 	= require("express"),
-	app 		= express(),
-	bodyParser 	= require("body-parser"),
-	mongoose 	= require("mongoose"),
-	flash		= require("connect-flash"),
-	passport	= require("passport"),
-	LocalStrategy = require("passport-local"),
-	Campground  = require("./models/campground"),
-	methodOverride = require("method-override"),
-	Comment     = require("./models/comment"),
-	User        = require("./models/user"),
-	seedDB		= require("./models/seeds");
+var express 		= require("express"),
+	app 			= express(),
+	bodyParser 		= require("body-parser"),
+	mongoose 		= require("mongoose"),
+	flash			= require("connect-flash"),
+	passport		= require("passport"),
+	LocalStrategy	= require("passport-local"),
+	Campground 		= require("./models/campground"),
+	methodOverride 	= require("method-override"),
+	Comment     	= require("./models/comment"),
+	User        	= require("./models/user"),
+	seedDB			= require("./models/seeds");
 
 // requiring routes
 var commentRoutes 		= require("./routes/comments"),
+	reviewRoutes     	= require("./routes/reviews"),
 	campgroundRoutes	= require("./routes/campgrounds"),
 	indexRoutes 		= require("./routes/index");
 
@@ -55,6 +56,7 @@ app.use(function(req, res, next){
 app.use("/",indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 
 app.listen(3000, function(){
